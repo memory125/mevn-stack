@@ -149,10 +149,36 @@ The Client can be accessed by hitting the document root:
 ## MongoDB Installation & Running
 * Please refer to the [installation doc](https://docs.mongodb.com/manual/administration/install-on-linux/).
 * Please refer to the [mongodb running doc](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/#run-mongodb-community-edition).
-* `mkdir -p /data/db`
-* `chmod 775 -R /data/db`
+* command
+	* `mkdir -p /data/db`
+	* `chmod 775 -R /data/db`
 
 ## Runing This Repo
 * `cd mevn-stack`
 * `npm install`
 * `npm run dev:serve` and `npm run dev:client`
+
+## New Feature - Store more user data to MongoDB
+* Currently, only one user can be stored because the constrait of MongoDB, when we want to create new user, it will prompt the following error:
+ `MongoError: E1100 duplicate key error collection: mevn-stack.users index: username_1 dup key: {: null}`
+* So we need to modify the user schema to the following formats
+ `const definition = {`
+   `name: {`
+    `type: String,`
+    `required: true`
+   `},`
+   `age: {`
+     `type: Number,`
+     `required: true`
+   `},`
+   `email: {`
+     `type: String,`
+     `required: true,`
+     `index: {`
+       `unique: true,`
+       `sparse: true`
+     `}`
+   `}`
+ `}`
+ * [Mongoose doc](https://mongoosejs.com/docs/2.7.x/docs/indexes.html).
+ * [StackoverFlow Doc](https://stackoverflow.com/questions/24430220/e11000-duplicate-key-error-index-in-mongodb-mongoose).
