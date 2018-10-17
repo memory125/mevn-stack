@@ -143,3 +143,16 @@ All user endpoints are behind the `/api` endpoint.
 The Client can be accessed by hitting the document root:
 
 `localhost:8080/` Will send you to the application.
+
+
+# Deployment Summary
+## MongoDB Installation & Running
+* Please refer to the [installation doc](https://docs.mongodb.com/manual/administration/install-on-linux/).
+* Please refer to the [mongodb running doc](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/#run-mongodb-community-edition).
+* `mkdir -p /data/db`
+* `chmod 775 -R /data/db`
+
+## Runing This Repo
+* `cd mevn-stack`
+* `npm install`
+* `npm run dev:serve` and `npm run dev:client`
