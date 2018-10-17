@@ -13,7 +13,11 @@ const definition = {
   },
   email: {
     type: String,
-    required: true
+    required: true,
+    index: {
+      unique: true,
+      sparse: true
+    }
   }
 }
 
